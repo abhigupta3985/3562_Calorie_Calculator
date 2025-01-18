@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        background-color: rgb(18, 17, 17);
+        font-family: sans-serif;
+        color: white;
+      }
+      header a {
+        color: white;
+        font-size: 50px;
+        margin-left: 110px;
+        text-decoration: none;
+      }
+      form{
+        
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 400px;
+        gap: 5px;
+        justify-content: center;
+        margin: auto;
+        margin-top: 65px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 5px 70px;
+        background-color: rgb(30, 28, 28);
+        border-radius: 10px;
+      }
+      .form >input{
+        border: none;
+        font-size: 20px;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 5px 10px ;
+        margin-left: -4px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      span {
+        color: crimson;
+      }
+      
+    </style>
+</head>
+<body>
+    <header><a href="">Calorie<span>Scan</span></a></header>
+    <form class="form" action="">
+        <label for="name">Enter your name</label>
+        <input type="text">
+        <label for="password">Password</label>
+        <input type="password">
+        <input type="submit" value="Signup">
+    </form>
+</body>
+</html>
