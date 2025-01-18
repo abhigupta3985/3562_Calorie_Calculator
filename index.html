@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Calorie Scanner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="nav-container">
+          <a href="#" class="logo">MyLogo</a>
+          <button class="mobile-menu-btn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <h1>Track Your Calories Instantly</h1>
+        <p>
+          Scan QR codes to get detailed nutritional information about your
+          favorite dishes
+        </p>
+        <button class="scan-button">Start Scanning Now</button>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Scanner Section -->
+      <section class="scanner-section" id="scanner">
+        <div class="scanner-container">
+          <div class="scanner-placeholder">
+            <p>Camera feed will appear here</p>
+            <p>Point camera at QR code</p>
+          </div>
+        </div>
+        <button class="scan-button">Start Scanning</button>
+      </section>
+
+      <section class="common-foods" id="foods">
+        <h2 class="section-title">Discover Healthy & Delicious Meals</h2>
+        <div class="food-cards">
+          <!-- Card 1 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img src="./assets/Chana-Masala.jpg" alt="" class="food-image" />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">Vegetarian</span>
+              <h3 class="food-name">Rainbow Buddha Bowl</h3>
+              <div class="calories">385 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">12.5g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">45.8g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">15.2g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">9.3g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img
+                src="./assets/samosa.jpg"
+                alt="Mediterranean Quinoa Bowl"
+                class="food-image"
+              />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">High Protein</span>
+              <h3 class="food-name">Mediterranean Quinoa Bowl</h3>
+              <div class="calories">420 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">18.2g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">52.4g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">16.8g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">8.5g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img
+                src="./assets/idli.jpg"
+                alt="Grilled Salmon Salad"
+                class="food-image"
+              />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">High Protein</span>
+              <h3 class="food-name">Grilled Salmon Salad</h3>
+              <div class="calories">440 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">32.5g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">12.8g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">28.2g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">4.5g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img
+                src="./assets/aloo_matar.jpg"
+                alt="Aloo Matar"
+                class="food-image"
+              />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">Breakfast</span>
+              <h3 class="food-name">Acai Breakfast Bowl</h3>
+              <div class="calories">320 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">8.5g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">48.3g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">12.4g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">11.2g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img
+                src="./assets/Butter_naan.jpg"
+                alt="Butter Naan"
+                class="food-image"
+              />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">High Protein</span>
+              <h3 class="food-name">Grilled Chicken Quinoa Bowl</h3>
+              <div class="calories">480 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">35.2g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">42.8g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">18.5g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">7.8g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="food-card">
+            <div class="food-image-container">
+              <img
+                src="./assets/Paneer_Masala.jpg"
+                alt="Vegan Power Bowl"
+                class="food-image"
+              />
+            </div>
+            <div class="food-info">
+              <span class="food-tag">Vegan</span>
+              <h3 class="food-name">Sweet Potato & Chickpea Bowl</h3>
+              <div class="calories">395 Cal</div>
+              <div class="nutrition-grid">
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌱</div>
+                  <div class="nutrition-value">14.8g</div>
+                  <div class="nutrition-label">Proteins</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🥖</div>
+                  <div class="nutrition-value">58.3g</div>
+                  <div class="nutrition-label">Carbs</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">💧</div>
+                  <div class="nutrition-value">13.2g</div>
+                  <div class="nutrition-label">Fats</div>
+                </div>
+                <div class="nutrition-item">
+                  <div class="nutrition-icon">🌾</div>
+                  <div class="nutrition-value">12.5g</div>
+                  <div class="nutrition-label">Fiber</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
