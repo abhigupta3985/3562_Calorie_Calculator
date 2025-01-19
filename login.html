@@ -3,128 +3,220 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>CalorieScan - Login</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        background-color: rgb(13, 13, 13);
-        font-family: sans-serif;
+        font-family: "Arial", sans-serif;
+        background-color: #0d0d0d;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+      }
+      .header{
+        margin-bottom: 25px;
       }
       header a {
         color: white;
-        font-size: 50px;
-        margin-left: 110px;
+        font-size: 40px;
+        margin-left: -510px;
+        margin-top: -30px;
         text-decoration: none;
-      }
-      .section-2 {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        margin-top: -20px;
-      }
-      .subsection-1 {
-        font-size: 20px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 550px;
-        height: 800px;
-        margin-top: 80px;
-        color: white;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        border-radius: 50px;
-        padding: 8px 50px;
-        background-color: rgb(47, 42, 42);
-      }
-      .button {
-        display: flex;
-        flex-direction: row;
-        gap: 50px;
-      }
-      .button button {
-        padding: 10px 20px;
-        font-size: 20px;
-        border-radius: 10px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      }
-      .image {
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 2px 10px;
-        background-color: rgb(47, 42, 42);
-        border-radius: 50px;
-        margin-top: 70px;
-        height: 700px;
       }
       span {
         color: crimson;
       }
-      button a {
-        text-decoration: none;
-        color: black;
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        max-width: 1200px;
+        background: #1e1c1c;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
       }
-      form {
-        margin-top: 50px;
+
+      .image-section {
+        flex: 1;
+        background: url("image-1.png") center center/cover no-repeat;
+        min-height: 500px;
+      }
+      .form-section {
+        flex: 1;
+        padding: 40px;
         display: flex;
         flex-direction: column;
-        width: 300px;
-        height: 300px;
-        gap: 5px;
         justify-content: center;
-        margin: auto;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        padding: 1px 70px;
-        background-color: rgb(30, 28, 28);
-        border-radius: 10px;
+        align-items: center;
       }
-      .form > input {
-        font-size: 20px;
-        margin: 10px;
-        padding: 5px 10px;
-        margin-left: -4px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+      .form-header {
+        margin-bottom: 30px;
+        text-align: center;
       }
-      img {
-        width: 700px;
-        height: 700px;
+
+      .form-header h1 {
+        font-size: 2.5rem;
+        color: crimson;
+        margin-bottom: 10px;
       }
-      .btn{
-        font-size: 20px;
-        padding: 5px 12px;
-        border-radius: 5px;
+
+      .form-header p {
+        font-size: 1rem;
+        color: #d3d3d3;
+      }
+
+      .form {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .form label {
+        font-size: 1rem;
+        color: #f0f0f0;
+      }
+
+      .form input {
+        font-size: 1rem;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        background: #333;
+        color: white;
+      }
+
+      .form input:focus {
+        outline: 2px solid crimson;
+      }
+
+      .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        background: crimson;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background: darkred;
+      }
+
+      .btn a {
+        color: white;
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .image-section {
+          display: none; /* Hide the image section on smaller screens */
+        }
+
+        .form-section {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
+    <header class="header">
       <a href="">Calorie<span>Scan</span></a>
     </header>
-
-    <div class="section-2">
-        
-      <div class="subsection-1">
-        <div>
-          <h1>Meet Calorie<span>Scan</span> : Healthy Make Easy with AI.</h1>
-        </div>
-        <div>
-          <p>
-            Improve your nutrition with HealthifySnap's advanced meal tracking &
-            meet Ria, your personalized AI coach.
-          </p>
-        </div>
-        <div class="form">
-            <form class="form" action="">
-              <label for="name">Enter your name</label>
-              <input type="text" />
-              <label for="password">Password</label>
-              <input type="password" />
-              <div>
-                <input class="btn" type="submit" value="Login" />
-                <button class="btn"><a href="signup.html">Signup</a></button>
-              </div>
-            </form>
-          </div>
+    <div class="container">
+      <!-- Image Section -->
+      <div class="image-section">
+        <img src="" alt="" />
       </div>
-      <div class="image"><img src="image-1.png" alt="" /></div>
+
+      <!-- Form Section -->
+      <div class="form-section">
+        <div class="form-header">
+          <h1>Welcome to Calorie<span>Scan</span></h1>
+          <p>Track your meals and nutrition with the power of AI.</p>
+        </div>
+        <form  class="form" action="/login" method="POST">
+          <label for="name">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <div class="form-buttons">
+            <button class="btn" type="submit">Login</button>
+            <button class="btn">
+              <a href="signup.html">Signup</a>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    
   </body>
 </html>
+
+<script>
+  document
+    .querySelector(".form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      var user = localStorage.getItem("user");
+
+      if (user) {
+        var parsedUser = JSON.parse(user);
+        if (parsedUser.password === password) {
+          localStorage.setItem("user", JSON.stringify(parsedUser));
+          window.location.href = "index.html";
+        } else {
+          alert("Incorrect password");
+        }
+      } else {
+        alert("User not found!");
+        window.location.href = "signup.html";
+      }
+      
+    });
+</script>
