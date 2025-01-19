@@ -126,7 +126,7 @@ This project involves building a web application that scans QR codes representin
 ---
 
 ## Deployed Application
-- [Live Demo Link](#) *(https://caloriescancalculator.netlify.app/)*
+- [Live Demo Link](#) *https://caloriescanner.netlify.app/*
 
 ---
 
