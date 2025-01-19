@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .scanner-page {
+      text-align: center;
+      width: 100%;
+      max-width: 700px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin: 20px auto;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #qr-reader {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+
+    #qr-reader-results {
+      margin-top: 20px;
+      color: #555;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #total-calories {
+      font-size: 1.5em;
+      margin-top: 30px;
+      color: #333;
+    }
+
+    form {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .form-item input {
+      width: 60px;
+      text-align: center;
+    }
+
+    .form-item label {
+      flex: 1;
+      text-align: left;
+    }
+
+    #stop-scanner {
+      background-color: #dc3545;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+    }
+
+    #stop-scanner:hover {
+      background-color: #c82333;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="scanner-page">
+    <h1>QR Scanner</h1>
+    <div id="qr-reader"></div>
+    <div id="qr-reader-results">
+      <h2>Scan Result:</h2>
+      <p id="result-text">No result yet</p>
+    </div>
+
+    <!-- Button to upload QR code image -->
+    <input type="file" id="file-input" accept="image/*" style="margin-top: 20px;" />
+    <button id="upload-btn">Upload QR Code</button>
+
+    <!-- Form to edit items -->
+    <form id="edit-form" style="display:none;">
+      <h3>Edit Item Quantities</h3>
+      <div id="form-items"></div>
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <div id="total-calories">
+      <h3>Total Calories: <span id="calories-display">0</span> kcal</h3>
+    </div>
+
+    <button id="stop-scanner">Stop Scanner</button>
+  </div>
+
+  <script>
+    const qrReader = new Html5Qrcode("qr-reader");
+    const resultText = document.getElementById("result-text");
+    const stopButton = document.getElementById("stop-scanner");
+    const formItemsContainer = document.getElementById("form-items");
+    const editForm = document.getElementById("edit-form");
+    const caloriesDisplay = document.getElementById("calories-display");
+    const fileInput = document.getElementById("file-input");
+    const uploadBtn = document.getElementById("upload-btn");
+
+    let scannedData = {};
+    let items = [];
+
+    // Function to start the QR scanner
+    function startScanner() {
+      qrReader.start(
+        { facingMode: "environment" }, // Use the back camera
+        { fps: 10, qrbox: 250 }, // Frames per second and scanner size
+        (decodedText) => {
+          let qrData;
+          try {
+            qrData = JSON.parse(decodedText);
+          } catch (error) {
+            console.error("Invalid QR code data:", error);
+            return;
+          }
+
+          scannedData = qrData;
+          items = qrData.items;
+
+          resultText.textContent = `Scanned Data: ${decodedText}`;
+
+          // Show the form to edit the quantities
+          showEditForm(items);
+        },
+        (errorMessage) => {
+          console.warn("Scanning Error:", errorMessage);
+        }
+      ).catch((err) => {
+        console.error("Error starting the scanner:", err);
+      });
+    }
+
+    // Function to display the scanned data in a form for editing
+    function showEditForm(items) {
+      formItemsContainer.innerHTML = ''; // Clear previous form items
+
+      items.forEach(item => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add('form-item');
+
+        // Create the input field for quantity
+        itemDiv.innerHTML = ` 
+          <label for="${item.name}">${item.name} (calories per unit: 40)</label>
+          <input type="number" id="${item.name}" name="${item.name}" value="${item.quantity}" min="1" />
+        `;
+        formItemsContainer.appendChild(itemDiv);
+      });
+
+      // Show the form
+      editForm.style.display = 'block';
+
+      // Calculate the total calories initially
+      calculateTotalCalories();
+    }
+
+    // Function to calculate total calories based on the quantities
+    function calculateTotalCalories() {
+      let totalCalories = 0;
+      items.forEach(item => {
+        const quantity = document.getElementById(item.name).value;
+        totalCalories += 40 * quantity; // Assuming 40 calories per unit for all items
+      });
+
+      caloriesDisplay.textContent = totalCalories;
+    }
+
+    // Function to stop the QR scanner
+    stopButton.addEventListener("click", () => {
+      qrReader.stop()
+        .then(() => {
+          resultText.textContent = "Scanner stopped.";
+          console.log("Scanner stopped.");
+        })
+        .catch((err) => {
+          console.error("Error stopping the scanner:", err);
+        });
+    });
+
+    // Handle form submission (update quantities)
+    editForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const updatedItems = [];
+      const formData = new FormData(editForm);
+
+      // Collect updated items
+      formData.forEach((value, key) => {
+        updatedItems.push({
+          name: key,
+          quantity: parseInt(value)
+        });
+      });
+
+      // Send updated data to the backend
+      fetch('http://localhost:5000/api/update-items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: updatedItems })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data updated:', data);
+        alert('Items updated successfully!');
+      })
+      .catch(error => {
+        console.error('Error updating data:', error);
+      });
+    });
+
+    // Event listener for quantity changes to update total calories
+    formItemsContainer.addEventListener("input", calculateTotalCalories);
+
+    // Automatically start the scanner when the page loads
+    startScanner();
+
+    // Handle the QR code image upload
+    // Handle the QR code image upload
+    uploadBtn.addEventListener("click", () => {
+  const file = fileInput.files[0];
+  if (file) {
+    console.log("File selected:", file); // Log file details
+    
+    if (!file.type.startsWith('image/')) {
+      console.error("Invalid file type. Please select an image.");
+      alert("Please upload a valid image file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imageUrl = e.target.result;
+      console.log("Loaded image URL:", imageUrl); // Log image data
+
+      Html5Qrcode.scanFile(imageUrl, true)
+        .then(decodedText => {
+          console.log("QR Code Decoded:", decodedText);
+
+          let qrData;
+          try {
+            qrData = JSON.parse(decodedText);
+          } catch (error) {
+            console.error("Invalid QR code data:", error);
+            return;
+          }
+
+          scannedData = qrData;
+          items = qrData.items;
+
+          resultText.textContent = `Scanned Data: ${decodedText}`;
+
+          // Show the form to edit the quantities
+          showEditForm(items);
+        })
+        .catch(error => {
+          console.error("Error scanning the uploaded image:", error);
+        });
+    };
+    reader.readAsDataURL(file);
+  } else {
+    alert("Please select a file first.");
+  }
+});
+
+
+  </script>
+
+</body>
+</html>
